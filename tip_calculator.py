@@ -1,8 +1,23 @@
-import sys
+from optparse import OptionParser   #import the OptionParser object from this module
 
-meal_cost = float(sys.argv[1])
-taxRate = float(sys.argv[2])
-tipRate = float(sys.argv[3])
+parser = OptionParser()     #create an instance of OptionParser
+
+parser.add_option("-m", "--meal", dest="meal_arg", help="Meal Cost")
+parser.add_option("-x", "--tax", dest="tax_arg", help="Tax for meal", default="8")
+parser.add_option("-t", "--tip", dest="tip_arg", help="Tip percentage",
+                    default="20")
+
+
+(options, args) = parser.parse_args() 
+if not (options.meal_arg): 
+    parser.error("You need to supply an argument for meal cost!")
+# if you want to require one or more of your arguments, you can add an if
+# statement that raises an error if a required argumnt is missing
+
+
+meal_cost = float(options.meal_arg)
+taxRate = float(options.tax_arg)
+tipRate = float(options.tip_arg)
 
 tax = meal_cost * taxRate/100
 meal_w_tax = meal_cost + tax
