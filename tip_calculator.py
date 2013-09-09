@@ -1,6 +1,8 @@
-meal_cost = float(raw_input("Cost of your meal: "))
-taxRate = float(raw_input("What is your tax rate percentage? "))
-tipRate = float(raw_input("What percentage do you want to tip? "))
+import sys
+
+meal_cost = float(sys.argv[1])
+taxRate = float(sys.argv[2])
+tipRate = float(sys.argv[3])
 
 tax = meal_cost * taxRate/100
 meal_w_tax = meal_cost + tax
